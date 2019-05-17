@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyleSheet, ScrollView, View, Text, Image } from 'react-native'
+import { getImageFromApi } from '../API/TMDBApi'
+
 
 class FilmItem extends React.Component {
     render() {
@@ -8,13 +10,13 @@ class FilmItem extends React.Component {
         return (
             <View style={styles.main_container}>
                 <View style={styles.view_globale}>
-                    <Image 
+                    <Image
                         style={styles.img}
-                        source={{uri: "image"}}
+                        source={{uri: getImageFromApi(film.poster_path)}}
                     />
                     <View style={styles.view_content}>
                         <View style={styles.view_header}>
-                            <Text style={styles.title_text}>{film.title}</Text>
+                            <Text style={styles.title_text} numberOfLines={10}>{film.title}</Text>
                             <Text style={styles.vote}>{film.vote_average}</Text>
                         </View>
                         <ScrollView style={styles.view_description}>
@@ -50,11 +52,11 @@ const styles = StyleSheet.create({
         height: 180,
         width: 120,
         margin: 4,
-        backgroundColor: 'blue',
+        backgroundColor: 'grey',
     },
 
     view_content : {
-            backgroundColor: 'green',
+            backgroundColor: 'white',
             flexDirection: 'column',
             justifyContent: 'space-between',
             flex: 1,
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
         height: 30,
         borderRadius: 4,
         borderWidth: 0.5,
-        backgroundColor: 'orange',
+        backgroundColor: 'white',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         margin: 4,
@@ -72,6 +74,7 @@ const styles = StyleSheet.create({
     },
     title_text: {
         margin: 2,
+        padding: 5,
     },
     vote: {
         margin: 2,
@@ -80,16 +83,16 @@ const styles = StyleSheet.create({
     view_description: {
         borderRadius: 4,
         borderWidth: 0.5,
-        backgroundColor: 'red',
+        backgroundColor: 'white',
         margin: 2,
     },
     text_description: {
-
+        padding: 5,
     },
     view_date: {
         borderRadius: 4,
         borderWidth: 0.5,
-        backgroundColor: 'purple',
+        backgroundColor: 'white',
         margin: 2,
         height: 30
     },
